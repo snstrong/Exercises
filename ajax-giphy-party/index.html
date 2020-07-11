@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Party!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo&family=Modak&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>GIPHY PARTY</h1>
+  <div id="formArea">
+    <form action="">
+      <label for="searchTerm">Search for a GIF:</label>
+      <input type="text" placeholder="Keyword" name="searchTerm" id="searchTerm">
+      <button type="submit">Search</button>
+      <button type="button" id="remove">Remove GIFs</button>
+    </form>
+  </div>
+
+  <div id="GIFarea"></div>
+
+  <!-- The starter code came with jQuery, but seems to work without it? -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

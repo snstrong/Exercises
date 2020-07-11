@@ -1,0 +1,93 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	background-color: paleturquoise;
+	font-family: 'Exo', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	color: blueviolet;
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 125px;
+	line-height: 125px;
+	font-weight: 400;
+	margin: 0px;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	text-shadow: 2px 2px white;
+	background-color: darkturquoise;
+	margin-bottom: 1rem;
+	font-family: 'Modak', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* -------------------------------- Form Styles -------------------------------- */
+
+#formArea {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+input,
+button,
+label {
+	font-size: 1.25rem;
+}
+
+input,
+button {
+	box-sizing: border-box;
+	height: 40px;
+	margin: 6px;
+	font-family: 'Exo', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input {
+	width: 200px;
+	border: 2px solid blueviolet;
+}
+
+input::placeholder {
+	color: darkturquoise;
+	padding-left: 8px;
+}
+
+button {
+	width: 100px;
+	background-color: blueviolet;
+	color: white;
+	border: none;
+}
+
+button[type="button"] {
+	width: 150px;
+}
+
+button[type="button"]:hover,
+button[type="button"]:focus {
+	border: 2px solid #fa0377;
+}
+
+button:hover,
+input:hover,
+button:focus,
+input:focus {
+	border: 2px solid darkturquoise;
+}
+
+/* -------------------------------- GIF Styles -------------------------------- */
+
+#GIFarea {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+img {
+	margin: 4px;
+}
