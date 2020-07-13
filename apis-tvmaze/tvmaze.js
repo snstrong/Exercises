@@ -96,6 +96,9 @@ async function getEpisodes(id) {
   }))
 }
 
+/** Populate shows list:
+ *     - given list of shows, add shows to DOM
+ */
 async function populateEpisodes(episodes) {
   console.log(episodes);
   const $episodesList = $('#episodes-list');
@@ -113,7 +116,10 @@ async function populateEpisodes(episodes) {
 	}
 }
 
-
+/** Handle "Get Episode" click":
+ *    - hide shows area
+ *    - get list of show episodes and display in episodes list
+ */
 $('#shows-list').on('click', async function(evt) {
   
   evt.preventDefault();
