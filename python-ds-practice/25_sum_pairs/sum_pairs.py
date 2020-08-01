@@ -21,3 +21,52 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+    add_pair = None
+    distance = len(nums)
+    for num in nums:
+        for i in nums[nums.index(num) + 1 : len(nums) - 1 : 1]:
+            if num + i == goal and (nums.index(num) - nums.index(i)) < distance:
+                distance = nums.index(num) - nums.index(i)
+                add_pair = (num, i)
+    if add_pair:
+        return add_pair
+    else:
+        return tuple()
+    
+    
+    
+    
+    # currentIndex = 0
+    # while currentIndex < len(nums):
+    #     distance = 0
+    #     for num in nums: 
+    #         distance += 1
+    #         if (num + nums[currentIndex + distance]) == goal:
+    #             return (num, nums[nums.index(num) + distance])
+    #         else:
+    #             currentIndex += 1
+
+    # currentIndex = 0
+    # while currentIndex < len(nums):
+    #     for num in nums:
+    #         distance = 1
+    #         while distance < len(nums) - currentIndex:
+    #             if (num + nums[currentIndex + distance]) == goal:
+    #                 return (num, nums[nums.index(num) + distance])
+    #         else:
+    #             currentIndex += 1
+    #             distance += 1
+    
+
+        
+        
+        
+# while (len(nums) - nums.index(num) - 1) > distance:
+
+        # count = 0
+        # remaining = nums[nums.index(num) + 1 : len(nums)-1 : 1]
+        # while count < ((len(nums) - 1) - (len(remaining) - 1)):
+        #     count += 1
+        #     if num + nums[nums.index(num) + count] == goal:
+        #         return (num, nums[nums.index(num) + count])
+    
