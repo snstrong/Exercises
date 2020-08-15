@@ -1,0 +1,30 @@
+input {
+    border-radius: 0;
+    height: 2em;
+    border: 1px solid teal;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(171, 220, 235);
+}
+
+button {
+    background-color: teal;
+    color: white;
+    height: 1.75em;
+    width: 175px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.25em;
+    border: 1px solid white;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+button:hover {
+    border: 3px solid white;
+}
