@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 5%;
+}
+
+h1 {
+    margin-bottom: 10px;
+    line-height: 1rem;
+}
