@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, flash
+from flask import Flask, request, render_template, flash, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 import surveys
 # from random import randint, choice, sample
@@ -11,7 +11,6 @@ debug = DebugToolbarExtension(app)
 #############################################################
 
 RESPONSES = []
-NUMBER = 0
 
 @app.route('/')
 def get_start_page():
@@ -32,5 +31,6 @@ def get_question(num):
 def get_answer():
     """Adds question response to list, then redirects to next question"""
     RESPONSES.append(request.form['response'])
-    NUMBER += 1 # "UnboundLocalError: local variable 'NUMBER' referenced before assignment"
-    return redirect(f'/question/{NUMBER}')
+    number = int(request.form['which_number']) + 1
+    return redirect(f'/question/{number}')
+# TODO - FIX INDEX OUT OF RANGE ^^^

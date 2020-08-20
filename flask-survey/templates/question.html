@@ -10,6 +10,7 @@
         {% for choice in choices %}
         <input type="radio" id="{{choice}}" name="response" value="{{choice}}">
         <label for="{{choice}}">{{choice}}</label>
+        <input type="hidden" name="which_number" value="{{number}}">
         {% endfor %}
     </div>
     <button>Next</button>
