@@ -10,11 +10,27 @@ debug = DebugToolbarExtension(app)
 
 #############################################################
 
-responses = []
+RESPONSES = []
+NUMBER = 0
 
 @app.route('/')
 def get_start_page():
     """Shows start page with survey title, instructions, and start button"""
     return render_template('index.html', title=surveys.satisfaction_survey.title, instructions=surveys.satisfaction_survey.instructions)
 
+@app.route('/question/<num>')
+def get_question(num):
+    """Used to show each question in the survey."""
+    num = int(num)
+    if surveys.satisfaction_survey.questions[num].choices:
+        choices = surveys.satisfaction_survey.questions[num].choices
+    else:
+        choices = ["Yes", "No"]
+    return render_template('question.html', number=num, question=surveys.satisfaction_survey.questions[num].question, choices=choices)
 
+@app.route('/answer', methods=['POST'])
+def get_answer():
+    """Adds question response to list, then redirects to next question"""
+    RESPONSES.append(request.form['response'])
+    NUMBER += 1 # "UnboundLocalError: local variable 'NUMBER' referenced before assignment"
+    return redirect(f'/question/{NUMBER}')
