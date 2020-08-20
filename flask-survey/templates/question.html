@@ -3,9 +3,18 @@
 {% block title%}Question {{number}}{% endblock %}
 
 {% block content%}
-<h1>Question {{number}}</h1>
-<form method="POST" action="/answer">
-    <p class="question" for="response">{{question}}</p>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<h1 class="question">{{question}}</h1>
+<form method="POST" action="/answer" id="question-form">
     <div class="radio-group">
         {% for choice in choices %}
         <input type="radio" id="{{choice}}" name="response" value="{{choice}}">
