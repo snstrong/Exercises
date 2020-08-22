@@ -4,8 +4,8 @@
     <h1>{{title}}</h1>
     <h2>Instructions</h2>
     <p>{{instructions}}</p>
-    <form>
-        <button formaction="/question/0">Begin Survey</button>
+    <form action="/begin" method="POST">
+        <button>Begin Survey</button>
     </form>
 
 {% endblock %}
