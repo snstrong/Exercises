@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Boggle</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Boggle</h1>
+            <!-- <p>Directions go here</p> -->
+        </header>
+        <section id="game-area">
+            <table id="game-board">
+                {% for row in board %}
+                <tr>
+                    {% for letter in row %}
+                    <td data-x="{{row.index(letter)}}" data-y="{{board.index(row)}}">{{letter}}</td>
+                    {% endfor %}
+                </tr>    
+                {% endfor %}
+            </table>
+            <div id="guesses-area">
+                <h2>Guesses</h2>
+                <div id="valid-guesses"></div>
+                <div id="invalid-guesses"></div>
+            </div>
+            <form action="/guess" method="POST">
+                <input type="text" placeholder="Enter a guess" aria-placeholder="Enter a guess" name="guess" id="guess">
+                <button id="submit-btn">Submit</button>
+            </form>
+        </section>
+    </main>
+    
+        
+</body>
+</html>

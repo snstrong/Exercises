@@ -1,0 +1,59 @@
+body {
+    background-color: #01243C;
+    color: #2874A6;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    text-shadow: 2px 2px #EBF5FB;
+    font-size: 4rem;
+    line-height: 4rem;
+    margin: 0;
+    -webkit-text-stroke: 2px #01243C;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+p {
+    color: #EBF5FB;
+}
+
+#game-board {
+    float: left;
+}
+
+#gueses-area {
+    float: right;
+    height: 500px;
+}
+
+form {
+    clear: both;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 15px solid #2874A6;
+    color: #1B4F72;
+    background-color: #2874A6;
+    border-radius: 2%;
+    margin-bottom: 1.5rem;
+}
+
+td {
+    width: 75px;
+    height: 75px;
+    border: 7px solid #2874A6;
+    background-color: #EBF5FB;
+    vertical-align: middle;
+    text-align: center;
+    font-family: inherit;
+    font-size: 3rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
