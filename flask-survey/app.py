@@ -9,8 +9,6 @@ debug = DebugToolbarExtension(app)
 
 #############################################################
 
-# RESPONSES = []
-
 @app.route('/')
 def get_start_page():
     """Shows start page with survey title, instructions, and start button"""
