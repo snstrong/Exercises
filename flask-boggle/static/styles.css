@@ -12,8 +12,8 @@ h1 {
     line-height: 5rem;
     margin-bottom: 1.5rem;
     margin-top: 0;
+    margin-left: 1.5rem;
     -webkit-text-stroke: 2px #01243C;
-    text-align: center;
 }
 
 header {
