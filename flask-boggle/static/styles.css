@@ -2,20 +2,34 @@ body {
     background-color: #01243C;
     color: #2874A6;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     text-shadow: 2px 2px #EBF5FB;
     font-size: 4rem;
-    line-height: 4rem;
-    margin: 0;
+    line-height: 5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
     -webkit-text-stroke: 2px #01243C;
+    text-align: center;
+}
+
+header {
+    background-color: #011725;
+    margin-bottom: 1.5rem;
+    vertical-align: middle;
+    height: 6rem;
 }
 
 h2 {
     text-align: center;
     font-size: 2rem;
     line-height: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 400;
 }
 
 p {
@@ -24,18 +38,16 @@ p {
 
 #game-board {
     float: left;
+    margin-left: 1.5rem;
 }
 
-#gueses-area {
-    float: right;
-    height: 500px;
+#guesses-area {
+    float: left;
+    margin-left: 1.5rem;
+    width: 20vw;
 }
 
-form {
-    clear: both;
-}
-
-table {
+#game-board {
     border-collapse: separate;
     border-spacing: 0;
     border: 15px solid #2874A6;
@@ -45,7 +57,7 @@ table {
     margin-bottom: 1.5rem;
 }
 
-td {
+#game-board td {
     width: 75px;
     height: 75px;
     border: 7px solid #2874A6;
@@ -56,4 +68,26 @@ td {
     font-size: 3rem;
     font-weight: 600;
     border-radius: 10px;
+}
+
+.ok {
+    color: palegreen;
+}
+
+.not-on-board {
+    color: red;
+}
+
+.not-word {
+    color: palegoldenrod;
+    text-decoration: line-through;
+}
+
+.guessed-word {
+    margin-right: 1rem;
+}
+
+#guessed-words {
+    display: flex;
+    flex-wrap: wrap;
 }
