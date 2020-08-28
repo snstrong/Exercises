@@ -5,7 +5,7 @@ let currentScore = 0;
 $guessForm.on("submit", async function (evt) {
   evt.preventDefault();
   let $guessInput = $("#guess");
-  let word = $("#guess").val();
+  let word = $("#guess").val().toLowerCase();
   let response = await checkWord(word);
   if (response === "Can't guess same word twice") {
     console.log(response);
