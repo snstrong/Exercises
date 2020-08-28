@@ -9,8 +9,10 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <h1>Boggle</h1>
+        <span id="timer"></span>
+        <span id="score"></span>
     </header>
     <main>
         <section id="game-area">
@@ -32,6 +34,11 @@
                 <div id="guessed-words"></div>
             </div>
             
+        </section>
+        <section id="end-game">
+            <h2>High Scores</h2>
+            <ol id="scores-list"></ol>
+            <!-- <button id="play-again">Play Again</button> -->
         </section>
     </main>
     <!-- Scripts -->
