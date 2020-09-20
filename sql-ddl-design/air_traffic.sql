@@ -1,5 +1,5 @@
 -- Data Modeling Exercise: Schema Critique
--- Part One: Outer Space
+-- Part Two: Air Traffic
 
 DROP DATABASE IF EXISTS air_traffic;
 
