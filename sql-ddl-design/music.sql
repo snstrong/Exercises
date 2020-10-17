@@ -39,7 +39,6 @@ CREATE DATABASE music;
 
   -- Revision:
   -- 
-  -- Tables: artists, producers, albums, songs, credits
 
   CREATE TABLE artists
   (

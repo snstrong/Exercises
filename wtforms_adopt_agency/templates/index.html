@@ -8,15 +8,23 @@
 <div style="clear: both;">
     {% for pet in pets %}
     {% if pet.available %}
-    <div class="card mr-4 mb-4" style="width: 18rem; float: left;">
-        <a href="/{{pet.id}}">
-            <img class="card-img-top" src="{{pet.image_url}}" alt="Card image cap">
-        </a>
-        <div class="card-body">
-            <h5 class="card-title">{{pet.name}}</h5>
-            <p class="card-text">Species: {{pet.species}}</p>
+    <a href="/{{pet.id}}">
+        <div class="card mr-4 mb-4" style="width: 18rem; height: 25rem; float: left;">
+            <a href="/{{pet.id}}">
+
+                {% if pet.image_url %}
+                <img class="card-img-top" src="{{pet.image_url}}" alt="Card image cap">
+                {% else %}
+                <img class="card-img-top" src="https://image.freepik.com/free-vector/pet-silhouettes_23-2147506424.jpg"
+                    alt="Card image cap">
+                {% endif %}
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{pet.name}}</h5>
+                <p class="card-text">Species: {{pet.species}}</p>
+            </div>
         </div>
-    </div>
+    </a>
     {% endif %}
     {% endfor %}
 </div>
@@ -26,7 +34,12 @@
     {% if not pet.available %}
     <div class="card mr-4 mb-4" style="width: 18rem; float: left;">
         <a href="/{{pet.id}}">
+            {% if pet.image_url %}
             <img class="card-img-top" src="{{pet.image_url}}" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top" src="https://image.freepik.com/free-vector/pet-silhouettes_23-2147506424.jpg"
+                alt="Card image cap">
+            {% endif %}
         </a>
         <div class="card-body">
             <h5 class="card-title">{{pet.name}}</h5>

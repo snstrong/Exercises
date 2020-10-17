@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{pet.name}} the {{pet.species}} | Details{% endblock %}
+{% block content %}
+{% if pet.image_url %}
+<img style="width: 300px; height: auto;" src="{{pet.image_url}}" alt="{{pet.name}} the {{pet.species}}">
+{% endif %}
+<div>
+    <h3 class="text-primary">Pet Details</h3>
+    <ul>
+        <li><strong>Name:</strong> {{pet.name}}</li>
+        <li><strong>Species:</strong> {{pet.species}}</li>
+        {% if pet.age %}
+        <li><strong>Age:</strong> {{pet.age}} years</li>
+        {% endif %}
+        <li>
+            <strong>Available?</strong>
+            {% if pet.available%}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </li>
+        {% if pet.notes %}
+        <li><strong>Comments:</strong> {{pet.notes}}</li>
+        {% endif %}
+    </ul>
+
+</div>
+
+<h2>Update This Pet:</h2>
+<form id="edit-pet-form" action="/{{pet.id}}" method="POST">
+    {{ form.hidden_tag() }}
+
+    {% for field in form
+           if field.widget.input_type != 'hidden' %}
+    <div class="form-group">
+        <p>
+            {{ field.label }}
+            {{ field(class_="form-control", placeholder=field.description) }}
+
+            {% for error in field.errors %}
+            <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </p>
+    </div>
+
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Submit Changes</button>
+</form>
+{% endblock %}

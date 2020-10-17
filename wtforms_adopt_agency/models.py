@@ -21,8 +21,7 @@ class Pet(db.Model):
                     nullable=False,
                     unique=False)               
     image_url = db.Column(db.String(),
-                    nullable=False,
-                    default="https://image.freepik.com/free-vector/pet-silhouettes_23-2147506424.jpg")
+                    nullable=True)
     age = db.Column(db.Integer(),
                     nullable=True)
     notes = db.Column(db.String(),
