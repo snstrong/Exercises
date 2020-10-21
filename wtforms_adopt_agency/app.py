@@ -13,7 +13,6 @@ app.config['SECRET_KEY'] = "SECRET!"
 debug = DebugToolbarExtension(app)
 
 connect_db(app)
-# db.create_all()
 
 @app.route("/")
 def show_pet_list():
