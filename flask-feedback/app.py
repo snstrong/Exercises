@@ -2,7 +2,6 @@
 from flask import Flask, render_template, redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Feedback
-# from forms import UserForm, TweetForm
 from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm, FeedbackForm
 
@@ -19,11 +18,6 @@ toolbar = DebugToolbarExtension(app)
 @app.route('/')
 def redirect_to_register():
     return redirect('/register')
-
-# @app.route('/register')
-# def show_registration_form():
-#     form = RegisterForm()
-#     return render_template('/register.html', form=form)
 
 @app.route('/register', methods=['GET','POST'])
 def process_registration():
