@@ -39,7 +39,7 @@ def process_registration():
         db.session.commit()
         session['user_id'] = new_user.username
         flash('Welcome! Successfully Created Your Account!', "success")
-        return redirect('/secret')
+        return redirect(f'/users/{new_user.username}')
     return render_template('/register.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -52,7 +52,7 @@ def show_login_form():
         if user:
             session['user_id'] = username
             flash(f"Welcome Back, {user.username}!")
-            return redirect('/secret')
+            return redirect(f'/users/{user.username}')
         else:
             form.username.errors = ['Invalid username/password.']
     return render_template('login.html', form=form)
@@ -101,6 +101,11 @@ def handle_feedback(username):
     else:
         return render_template('add_feedback.html', form=form)
 
-
-
+@app.route('/users/<username>/delete')
+def delete_user(username):
+    user = User.query.get_or_404(username)
+    User.query.filter_by(username=username).delete()
+    db.session.commit()
+    flash(f"Account for {username} deleted.", "danger")
+    return redirect('/login')
 

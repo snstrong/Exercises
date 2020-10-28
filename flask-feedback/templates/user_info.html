@@ -8,13 +8,17 @@
         <li><strong>Name:</strong> {{user.first_name}} {{user.last_name}}</li>
         <li><strong>Email:</strong> {{user.email}}</li>
     </ul>
+    <div>
+        <a href="/users/{{user.username}}/delete" class="btn btn-danger">Delete User</a>
+    </div>
 </section>
+
 
 <section>
     <h3>Feedback</h3>
-    {% if user.feedback %}
+    {% if user.feedbacks %}
     <div class="row">
-        {% for i in user.feedback %}
+        {% for i in user.feedbacks %}
         <div class="col-lg-4 col-md-6 col-sm-12 bg-light border border-primary rounded p-2 mb-4">
             <h4>{{i.title}}</h4>
             <p class="m-0">{{i.content}}</p>
