@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<h2>User Login</h2>
+<form method="POST">
+    {% include 'base_form.html' %}
+    <button class='btn btn-primary'>Login</button>
+</form>
+
+{% endblock %}
