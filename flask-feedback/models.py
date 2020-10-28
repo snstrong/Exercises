@@ -34,7 +34,7 @@ class User(db.Model):
         nullable=False)
     feedbacks = db.relationship("Feedback",
         backref="user",
-        cascade="all, delete, delete-orphan")
+        cascade="all, delete-orphan")
 
     @classmethod
     def register(cls, username, pwd, email, first_name, last_name):

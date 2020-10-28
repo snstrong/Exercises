@@ -98,8 +98,9 @@ def handle_feedback(username):
 @app.route('/users/<username>/delete')
 def delete_user(username):
     user = User.query.get_or_404(username)
-    User.query.filter_by(username=username).delete()
+    db.session.delete(user)
     db.session.commit()
+    session.pop("username")
     flash(f"Account for {username} deleted.", "danger")
     return redirect('/login')
 
