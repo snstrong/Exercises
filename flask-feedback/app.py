@@ -1,10 +1,10 @@
 """Flask Feedback App"""
 from flask import Flask, render_template, redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, db, User
+from models import connect_db, db, User, Feedback
 # from forms import UserForm, TweetForm
 from sqlalchemy.exc import IntegrityError
-from forms import RegisterForm, LoginForm
+from forms import RegisterForm, LoginForm, FeedbackForm
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres:///feedback"
@@ -81,3 +81,26 @@ def show_user_info(username):
         return redirect(f'/users/{session["user_id"]}')
     user = User.query.get_or_404(username)
     return render_template('user_info.html', user=user)
+
+@app.route('/users/<username>/feedback/add', methods=['GET', 'POST'])
+def handle_feedback(username):
+    """Shows feedback form and handles data submission for same."""
+    if "user_id" not in session:
+        flash("Please login first!", "danger")
+        return redirect('/login')
+    User.query.get_or_404(username)
+    form = FeedbackForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        content = form.content.data
+        new_feedback = Feedback(title=title, content=content, username=username)
+        db.session.add(new_feedback)
+        db.session.commit()
+        flash('Feedback submitted!', "success")
+        return redirect(f'/users/{username}')
+    else:
+        return render_template('add_feedback.html', form=form)
+
+
+
+
