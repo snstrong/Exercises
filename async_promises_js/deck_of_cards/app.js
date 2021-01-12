@@ -1,18 +1,34 @@
 const BASEURL = "https://deckofcardsapi.com/api/deck";
+let global_deck_id;
+
+// Set deck
+//
+async function set_deck() {
+  let deck = await axios.get(
+    "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+  );
+  return deck;
+}
 
 // Get a card
+//
 async function getCard(deck_id) {
   let card = await axios.get(`${BASEURL}/${deck_id}/draw/?count=1`);
   return card;
 }
 
+// Render card in HTML
+//
 async function extract_card_info(deck_id) {
   let card = await getCard(deck_id);
+  console.log(card.data.remaining);
+  if (card.data.remaining === 0) {
+    alert("Last card in the deck!");
+    let button = document.querySelector("button");
+    button.parentNode.removeChild(button);
+  }
   return card.data.cards[0];
 }
-
-// Render card in HTML
-// card container id: cards-container
 
 function render_img(src, alt) {
   // Returns an HTML image element
@@ -32,26 +48,23 @@ function element_and_text(element, text) {
 
 async function render_card(deck_id) {
   let card = await extract_card_info(deck_id);
+  let card_label = document.querySelector("#card-label");
+  card_label.innerText = `${card.value} of ${card.suit}`;
   let image = render_img(card.image);
-  let card_label = element_and_text("p", `${card.suit} of ${card.value}`);
   let container = document.querySelector("#cards-container");
-  container.appendChild(card_label);
   container.appendChild(image);
-  console.log(card);
 }
 
 // Handle click to get new card
-// Button id: card-button
-// Add evt listener to button and on click request new card and render card
+//
+let button = document.querySelector("button");
+button.addEventListener("click", () => {
+  render_card(global_deck_id);
+});
 
-// getCard("new")
-//   .then((card) => {
-//     console.log(card);
-//     return getCard(card.data.deck_id);
-//   })
-//   .then((card) => {
-//     console.log(card);
-//     return getCard(card.data.deck_id);
-//   });
-
-render_card("new");
+// Set deck for this session
+//
+set_deck().then((deck) => {
+  global_deck_id = deck.data.deck_id;
+  return;
+});
