@@ -3,3 +3,4 @@ __pycache__
 *.zip
 venv
 *.icloud
+node_modules
