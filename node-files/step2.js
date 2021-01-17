@@ -5,6 +5,7 @@
 const fs = require("fs");
 const axios = require("axios");
 const validUrl = require("valid-url");
+const process = require("process");
 
 function cat(path) {
   fs.readFile(path, "utf8", function (err, data) {
@@ -40,13 +41,15 @@ function checkIfURL(text) {
   }
 }
 
-cat("dickinson.txt");
+// cat("dickinson.txt");
 
-webCat("http://www.google.com");
+// webCat("http://www.google.com");
 
-checkIfURL("http://google.com");
+// checkIfURL("http://google.com");
 
-checkIfURL("dickinson.txt");
+// checkIfURL("dickinson.txt");
 
 // Should throw TypeError
 // checkIfURL(49);
+
+checkIfURL(process.argv[2]);
