@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const axios = require("axios");
+const validUrl = require("valid-url");
 
 function cat(path) {
   fs.readFile(path, "utf8", function (err, data) {
@@ -26,9 +27,26 @@ function webCat(url) {
   }
 }
 
+function checkIfURL(text) {
+  try {
+    if (validUrl.isUri(text)) {
+      webCat(text);
+    } else {
+      cat(text);
+    }
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
+}
+
 cat("dickinson.txt");
 
 webCat("http://www.google.com");
 
-// Below line will throw error:
-// cat("nonexistent.txt");
+checkIfURL("http://google.com");
+
+checkIfURL("dickinson.txt");
+
+// Should throw TypeError
+// checkIfURL(49);
