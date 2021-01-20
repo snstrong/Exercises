@@ -8,7 +8,7 @@ class MarkovMachine {
   constructor(text) {
     let words = text.split(/[ \r\n]+/);
     this.words = words.filter((c) => c !== "");
-    this.makeChains();
+    this.chains = this.makeChains();
   }
 
   /** set markov chains:
@@ -39,12 +39,33 @@ class MarkovMachine {
 
   /** return random text from chains */
   makeText(numWords = 100) {
-    // TODO
+    // Choose random first word
     let firstWord = this.words[Math.floor(Math.random() * this.words.length)];
-    console.log(firstWord);
+    console.log("This is the first word: " + firstWord);
+    let next;
+    next = "it's here";
+    let result = "";
+
+    for (let i = 0; i <= numWords && next; i++) {
+      if (i === 0) {
+        result = result + firstWord;
+        next = this.chains[firstWord][
+          Math.floor(Math.random() * this.chains[firstWord].length)
+        ];
+      } else {
+        next = this.chains[next][
+          Math.floor(Math.random() * this.chains[next].length)
+        ];
+      }
+      result = result + " " + next;
+    }
+    console.log(result);
+    return result;
   }
 }
 
 let m = new MarkovMachine(
   "Shall I compare thee to a summer’s day? Thou art more lovely and more temperate: Rough winds do shake the darling buds of May, And summer’s lease hath all too short a date."
 );
+
+m.makeText();
