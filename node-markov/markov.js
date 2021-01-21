@@ -42,7 +42,6 @@ class MarkovMachine {
     // TODO: make sure null isn't allowed as "next" until the end
     // Choose random first word
     let firstWord = this.words[Math.floor(Math.random() * this.words.length)];
-    // console.log("This is the first word: " + firstWord);
     let next;
     next = "it's here";
     let result = "";
@@ -58,18 +57,16 @@ class MarkovMachine {
           Math.floor(Math.random() * this.chains[next].length)
         ];
       }
+      if (next === null) {
+        next = this.chains[next][
+          Math.floor(Math.random() * this.chains[next].length)
+        ];
+      }
       result = result + " " + next;
     }
-    // console.log(result);
     result = new String(result);
     return result;
   }
 }
-
-let m = new MarkovMachine(
-  "Shall I compare thee to a summer’s day? Thou art more lovely and more temperate: Rough winds do shake the darling buds of May, And summer’s lease hath all too short a date."
-);
-
-m.makeText();
 
 module.exports = { MarkovMachine };
