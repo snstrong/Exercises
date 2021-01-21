@@ -33,15 +33,16 @@ class MarkovMachine {
         result[this.words[i]].push(next);
       }
     }
-    console.log(result);
+    // console.log(result);
     return result;
   }
 
   /** return random text from chains */
   makeText(numWords = 100) {
+    // TODO: make sure null isn't allowed as "next" until the end
     // Choose random first word
     let firstWord = this.words[Math.floor(Math.random() * this.words.length)];
-    console.log("This is the first word: " + firstWord);
+    // console.log("This is the first word: " + firstWord);
     let next;
     next = "it's here";
     let result = "";
@@ -59,7 +60,8 @@ class MarkovMachine {
       }
       result = result + " " + next;
     }
-    console.log(result);
+    // console.log(result);
+    result = new String(result);
     return result;
   }
 }
@@ -69,3 +71,5 @@ let m = new MarkovMachine(
 );
 
 m.makeText();
+
+module.exports = { MarkovMachine };
