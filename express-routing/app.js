@@ -1,4 +1,5 @@
 const express = require("express");
+const ExpressError = require("./expressError");
 
 const app = express();
 
@@ -63,49 +64,101 @@ function calculateMode(nums) {
   return modes;
 }
 
-function getQueryInts(nums) {
+function getInts(nums) {
+  if (!nums) {
+    throw new ExpressError("Numbers are required", 400);
+  }
   let arr = nums.split(",");
-  console.log(arr);
   arr.forEach((num, index, arr) => {
-    arr[index] = parseInt(num);
+    if (parseInt(num)) {
+      arr[index] = parseInt(num);
+    } else {
+      throw new ExpressError(`${num} is not a number`, 400);
+    }
   });
   return arr;
 }
 
-app.get("/mean", (req, res) => {
-  // res.json(CANDIES);
-  let nums = req.query.nums;
-  let arr = getQueryInts(nums);
-  let mean = calculateMean(arr);
-  console.log("The mean of these numbers is: ", mean);
-  let response = {
-    operation: "mean",
-    value: mean,
-  };
-  console.log(response);
-  return res.json(response);
+app.get("/:all", (req, res, next) => {
+  try {
+    let operation = req.params.all;
+    let fn;
+    if (operation === "mean") {
+      fn = calculateMean;
+    } else if (operation === "median") {
+      fn = calculateMedian;
+    } else if (operation === "mode") {
+      fn = calculateMode;
+    } else {
+      throw new ExpressError("Page not found", 404);
+    }
+    let nums = req.query.nums;
+    let arr = getInts(nums);
+    let val = fn(arr);
+    let response = {
+      operation: operation,
+      value: val,
+    };
+    return res.json(response);
+  } catch (e) {
+    next(e);
+  }
 });
 
-app.get("/median", (req, res) => {
-  let nums = req.query.nums;
-  let arr = getQueryInts(nums);
-  let median = calculateMedian(arr);
-  let response = {
-    operation: "median",
-    value: median,
-  };
-  return res.json(response);
+// app.get("/mean", (req, res, next) => {
+//   try {
+//     let nums = req.query.nums;
+//     let arr = getInts(nums);
+//     let mean = calculateMean(arr);
+//     console.log("The mean of these numbers is: ", mean);
+//     let response = {
+//       operation: "mean",
+//       value: mean,
+//     };
+//     return res.json(response);
+//   } catch (e) {
+//     next(e);
+//   }
+// });
+
+// app.get("/median", (req, res, next) => {
+//   let nums = req.query.nums;
+//   let arr = getInts(nums);
+//   let median = calculateMedian(arr);
+//   let response = {
+//     operation: "median",
+//     value: median,
+//   };
+//   return res.json(response);
+// });
+
+// app.get("/mode", (req, res, next) => {
+//   let nums = req.query.nums;
+//   let arr = getInts(nums);
+//   let mode = calculateMode(arr);
+//   let response = {
+//     operation: "mode",
+//     value: mode,
+//   };
+//   return res.json(response);
+// });
+
+// 404 handler
+app.use(function (req, res, next) {
+  const notFoundError = new ExpressError("Not Found", 404);
+  return next(notFoundError);
 });
 
-app.get("/mode", (req, res) => {
-  let nums = req.query.nums;
-  let arr = getQueryInts(nums);
-  let mode = calculateMode(arr);
-  let response = {
-    operation: "mode",
-    value: mode,
-  };
-  return res.json(response);
+// generic error handler
+app.use(function (err, req, res, next) {
+  // the default status is 500 Internal Server Error
+  let status = err.status || 500;
+  let message = err.message;
+
+  // set the status and alert the user
+  return res.status(status).json({
+    error: { message, status },
+  });
 });
 
 app.listen(3000, function () {
