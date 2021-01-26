@@ -39,7 +39,7 @@ function calculateMode(nums) {
   // the returned result is provided as an array
   // mode of [3, 5, 4, 4, 1, 1, 2, 3] = [1, 3, 4]
 
-  var modes = [],
+  let modes = [],
     count = [],
     i,
     number,
@@ -98,7 +98,14 @@ app.get("/median", (req, res) => {
 });
 
 app.get("/mode", (req, res) => {
-  res.send("This is the MODE route");
+  let nums = req.query.nums;
+  let arr = getQueryInts(nums);
+  let mode = calculateMode(arr);
+  let response = {
+    operation: "mode",
+    value: mode,
+  };
+  return res.json(response);
 });
 
 app.listen(3000, function () {
