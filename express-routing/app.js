@@ -105,50 +105,6 @@ app.get("/:all", (req, res, next) => {
   }
 });
 
-// app.get("/mean", (req, res, next) => {
-//   try {
-//     let nums = req.query.nums;
-//     let arr = getInts(nums);
-//     let mean = calculateMean(arr);
-//     console.log("The mean of these numbers is: ", mean);
-//     let response = {
-//       operation: "mean",
-//       value: mean,
-//     };
-//     return res.json(response);
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
-// app.get("/median", (req, res, next) => {
-//   let nums = req.query.nums;
-//   let arr = getInts(nums);
-//   let median = calculateMedian(arr);
-//   let response = {
-//     operation: "median",
-//     value: median,
-//   };
-//   return res.json(response);
-// });
-
-// app.get("/mode", (req, res, next) => {
-//   let nums = req.query.nums;
-//   let arr = getInts(nums);
-//   let mode = calculateMode(arr);
-//   let response = {
-//     operation: "mode",
-//     value: mode,
-//   };
-//   return res.json(response);
-// });
-
-// 404 handler
-app.use(function (req, res, next) {
-  const notFoundError = new ExpressError("Not Found", 404);
-  return next(notFoundError);
-});
-
 // generic error handler
 app.use(function (err, req, res, next) {
   // the default status is 500 Internal Server Error
