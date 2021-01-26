@@ -13,9 +13,10 @@ function calculateMean(nums) {
 }
 
 function calculateMedian(nums) {
-  // https://www.tutorialspoint.com/calculating-median-of-an-array-javascript
+  // calculation from
+  // http://www.tutorialspoint.com/calculating-median-of-an-array-javascript
 
-  const sorted = arr.slice().sort((a, b) => {
+  const sorted = nums.slice().sort((a, b) => {
     return a - b;
   });
   if (sorted.length % 2 === 0) {
@@ -28,11 +29,39 @@ function calculateMedian(nums) {
   }
 }
 
-function calculateMode(nums) {
-  // See https://jonlabelle.com/snippets/view/javascript/calculate-mean-median-mode-and-range-in-javascript
-}
+let testNums = [3, 5, 4, 4, 1, 1, 2, 3];
 
-let testNums = "1,2,3,4,5";
+function calculateMode(nums) {
+  // Calculation from
+  // https://jonlabelle.com/snippets/view/javascript/calculate-mean-median-mode-and-range-in-javascript
+
+  // as result can be bimodal or multi-modal,
+  // the returned result is provided as an array
+  // mode of [3, 5, 4, 4, 1, 1, 2, 3] = [1, 3, 4]
+
+  var modes = [],
+    count = [],
+    i,
+    number,
+    maxIndex = 0;
+
+  for (i = 0; i < nums.length; i += 1) {
+    number = nums[i];
+    count[number] = (count[number] || 0) + 1;
+    if (count[number] > maxIndex) {
+      maxIndex = count[number];
+    }
+  }
+
+  for (i in count)
+    if (count.hasOwnProperty(i)) {
+      if (count[i] === maxIndex) {
+        modes.push(Number(i));
+      }
+    }
+
+  return modes;
+}
 
 function getQueryInts(nums) {
   let arr = nums.split(",");
@@ -47,17 +76,28 @@ app.get("/mean", (req, res) => {
   // res.json(CANDIES);
   let nums = req.query.nums;
   let arr = getQueryInts(nums);
-  console.log(arr);
   let mean = calculateMean(arr);
   console.log("The mean of these numbers is: ", mean);
-  res.send("This is the MEAN route");
+  let response = {
+    operation: "mean",
+    value: mean,
+  };
+  console.log(response);
+  return res.json(response);
 });
+
 app.get("/median", (req, res) => {
-  // res.json(CANDIES);
-  res.send("This is the MEDIAN route");
+  let nums = req.query.nums;
+  let arr = getQueryInts(nums);
+  let median = calculateMedian(arr);
+  let response = {
+    operation: "median",
+    value: median,
+  };
+  return res.json(response);
 });
+
 app.get("/mode", (req, res) => {
-  // res.json(CANDIES);
   res.send("This is the MODE route");
 });
 
