@@ -1,17 +1,16 @@
 // Imports
 //
 const express = require("express");
-const ExpressError = require("./expressError");
+const ExpressError = require("./ExpressError");
 const app = express();
-const userRoutes = require("./routes");
-const middleware = require("./middleware");
+const routes = require("./routes");
 const morgan = require("morgan");
 
 //////////////////////////////////////////////////////
 
 app.use(express.json());
 app.use(morgan("dev"));
-
+app.use(routes);
 //////////////////////////////////////////////////////
 
 // 404 handler
@@ -33,7 +32,5 @@ app.use(function (err, req, res, next) {
   });
 });
 // end generic handler
-app.listen(3000, function () {
-  console.log("Server is listening on port 3000");
-});
-// end app.listen
+
+module.exports = app;
