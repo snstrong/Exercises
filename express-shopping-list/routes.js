@@ -31,7 +31,6 @@ router.post("/items", function (req, res, next) {
 
 router.get("/items/:name", function (req, res, next) {
   /* this route should display a single item’s name and price. */
-  // TODO
   const foundItem = items.find((item) => item.name === req.params.name);
   if (foundItem === undefined) {
     throw new ExpressError("Item not found", 404);
@@ -43,7 +42,17 @@ router.patch("/items/:name", function (req, res, next) {
   /* this route should modify a single item’s name and/or price.
    ** Here is what a sample request/response looks like:
    ** {“name”:”new popsicle”, “price”: 2.45} => {“updated”: {“name”: “new popsicle”, “price”: 2.45}} */
-  // TODO
+  const foundItem = items.find((item) => item.name === req.params.name);
+  if (foundItem === undefined) {
+    throw new ExpressError("Item not found", 404);
+  }
+  if (req.body.name) {
+    foundItem.name = req.body.name;
+  }
+  if (req.body.price) {
+    foundItem.price = req.body.price;
+  }
+  return res.json({ item: foundItem });
 });
 
 router.delete("/items/:name", function (req, res, next) {
