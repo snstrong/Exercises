@@ -60,7 +60,12 @@ router.delete("/items/:name", function (req, res, next) {
    ** Here is what a sample response looks like:
    ** {message: “Deleted”}
    */
-  // TODO
+  const foundItem = items.findIndex((item) => item.name === req.params.name);
+  if (foundItem === -1) {
+    throw new ExpressError("Item not found", 404);
+  }
+  items.splice(foundItem, 1);
+  return res.json({ message: "Deleted" });
 });
 
 module.exports = router;
