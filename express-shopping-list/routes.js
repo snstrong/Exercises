@@ -15,7 +15,6 @@ router.post("/items", function (req, res, next) {
   /* this route should accept JSON data and add it to the shopping list.
    ** Here is what a sample request/response looks like:
    ** {“name”:”popsicle”, “price”: 1.45} => {“added”: {“name”: “popsicle”, “price”: 1.45}} */
-  // TODO
   try {
     if (!req.body.name || !req.body.price)
       throw new ExpressError("Both name and price are required", 400);
@@ -33,6 +32,11 @@ router.post("/items", function (req, res, next) {
 router.get("/items/:name", function (req, res, next) {
   /* this route should display a single item’s name and price. */
   // TODO
+  const foundItem = items.find((item) => item.name === req.params.name);
+  if (foundItem === undefined) {
+    throw new ExpressError("Item not found", 404);
+  }
+  return res.json({ item: foundItem });
 });
 
 router.patch("/items/:name", function (req, res, next) {
