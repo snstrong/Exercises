@@ -6,12 +6,17 @@ const ExpressError = require("./expressError");
 
 app.use(express.json());
 
-//////////////////////////////////
-// Routes
-//////////////////////////////////
+/*********************************
+ ** Routes
+ *********************************/
 
+/* Routes for Companies */
 const cRoutes = require("./routes/companies");
 app.use("/companies", cRoutes);
+
+/* Routes for Invoices */
+const iRoutes = require("./routes/invoices");
+app.use("/invoices", iRoutes);
 
 /** 404 handler */
 
