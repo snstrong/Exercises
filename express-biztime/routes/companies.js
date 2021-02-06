@@ -2,7 +2,9 @@ const express = require("express");
 const ExpressError = require("../expressError");
 const router = express.Router();
 const db = require("../db");
+const slugify = require("slugify");
 
+/* Get data for all companies */
 router.get("/", async (req, res, next) => {
   try {
     const results = await db.query(`SELECT * FROM companies`);
@@ -12,6 +14,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/* Get data for one company */
 router.get("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
@@ -34,9 +37,14 @@ router.get("/:code", async (req, res, next) => {
   }
 });
 
+/* Add new company */
 router.post("/", async (req, res, next) => {
   try {
-    const { code, name, description } = req.body;
+    const { name, description } = req.body;
+    const code = slugify(name, {
+      lower: true,
+      strict: true,
+    });
     const results = await db.query(
       "INSERT INTO companies (code, name, description) VALUES ($1, $2, $3) RETURNING code, name, description",
       [code, name, description]
@@ -47,6 +55,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+/* Update data for a company */
 router.put("/:code", async (req, res, next) => {
   try {
     const { code } = req.params;
@@ -62,6 +71,7 @@ router.put("/:code", async (req, res, next) => {
   } catch (err) {}
 });
 
+/* Delete a company */
 router.delete("/:code", async (req, res, next) => {
   try {
     const results = db.query("DELETE FROM companies WHERE code = $1", [
