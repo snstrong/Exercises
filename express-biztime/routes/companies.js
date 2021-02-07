@@ -85,6 +85,20 @@ router.put("/:code", async (req, res, next) => {
   } catch (err) {}
 });
 
+/* Associate a company with an industry */
+router.put("/:code/industry", async (req, res, next) => {
+  try {
+    const results = await db.query(
+      `INSERT INTO companies_industries (company_code, industry_code)
+        VALUES ($1, $2) RETURNING company_code, industry_code`,
+      [req.params.code, req.body.industry_code]
+    );
+    return res.json(results.rows[0]);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 /* Delete a company */
 router.delete("/:code", async (req, res, next) => {
   try {

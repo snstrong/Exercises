@@ -11,12 +11,16 @@ app.use(express.json());
  *********************************/
 
 /* Routes for Companies */
-const cRoutes = require("./routes/companies");
-app.use("/companies", cRoutes);
+const companyRoutes = require("./routes/companies");
+app.use("/companies", companyRoutes);
 
 /* Routes for Invoices */
-const iRoutes = require("./routes/invoices");
-app.use("/invoices", iRoutes);
+const invoiceRoutes = require("./routes/invoices");
+app.use("/invoices", invoiceRoutes);
+
+/* Routes for Industries */
+const industryRoutes = require("./routes/industries");
+app.use("/industries", industryRoutes);
 
 /** 404 handler */
 
