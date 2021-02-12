@@ -4,3 +4,4 @@ __pycache__
 venv
 *.icloud
 node_modules
+.env
