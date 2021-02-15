@@ -105,7 +105,20 @@ class User {
         WHERE m.from_username = $1`,
       [username]
     );
-    return result.rows;
+    return result.rows.map((data) => {
+      return {
+        id: data.id,
+        body: data.body,
+        sent_at: data.sent_at,
+        read_at: data.read_at,
+        to_user: {
+          username: data.username,
+          first_name: data.first_name,
+          last_name: data.last_name,
+          phone: data.phone,
+        },
+      };
+    });
   }
 
   /** Return messages to this user.
