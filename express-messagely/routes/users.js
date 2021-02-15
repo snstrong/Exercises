@@ -25,6 +25,15 @@ router.get("/", ensureLoggedIn, async function (req, res, next) {
  *
  **/
 
+router.get("/:username", async function (req, res, next) {
+  try {
+    let user = await User.get(req.params.username);
+    return res.json({ user: user });
+  } catch (err) {
+    return next(err);
+  }
+});
+
 /** GET /:username/to - get messages to user
  *
  * => {messages: [{id,
