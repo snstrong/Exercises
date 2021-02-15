@@ -43,6 +43,14 @@ router.get("/:username", async function (req, res, next) {
  *                 from_user: {username, first_name, last_name, phone}}, ...]}
  *
  **/
+router.get("/:username/to", async function (req, res, next) {
+  try {
+    let messages_to = await User.messagesTo(req.params.username);
+    return res.json({ messages: messages_to });
+  } catch (err) {
+    return next(err);
+  }
+});
 
 /** GET /:username/from - get messages from user
  *
