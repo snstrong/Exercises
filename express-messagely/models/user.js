@@ -32,16 +32,38 @@ class User {
 
   /** Authenticate: is this username/password valid? Returns boolean. */
 
-  static async authenticate(username, password) {}
+  static async authenticate(username, password) {
+    const result = await db.query(
+      `SELECT password FROM users WHERE username = $1`,
+      [username]
+    );
+    let user = result.rows[0];
+    let is_valid = await bcrypt.compare(password, user.password);
+    return is_valid;
+  }
 
   /** Update last_login_at for user */
 
-  static async updateLoginTimestamp(username) {}
+  static async updateLoginTimestamp(username) {
+    const result = await db.query(
+      `UPDATE users SET last_login_at = current_timestamp
+      WHERE username = $1 RETURNING username`,
+      [username]
+    );
+    if (!result.rows[0]) {
+      throw new ExpressError(`No such user: ${username}`, 404);
+    }
+  }
 
   /** All: basic info on all users:
-   * [{username, first_name, last_name, phone}, ...] */
-
-  static async all() {}
+   * [{username, first_name, last_name, phone}, ...]
+   **/
+  static async all() {
+    const result = await db.query(
+      `SELECT username, first_name, last_name, phone FROM users`
+    );
+    return result.rows;
+  }
 
   /** Get: get user by username
    *
@@ -50,9 +72,20 @@ class User {
    *          last_name,
    *          phone,
    *          join_at,
-   *          last_login_at } */
+   *          last_login_at }
+   **/
+  static async get(username) {
+    const result = await db.query(
+      `SELECT username, first_name, last_name, phone, join_at, last_login_at FROM users WHERE username = $1`,
+      [username]
+    );
 
-  static async get(username) {}
+    if (!result.rows[0]) {
+      throw new ExpressError(`User ${username} not found`, 404);
+    }
+
+    return result.rows[0];
+  }
 
   /** Return messages from this user.
    *
