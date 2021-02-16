@@ -1,8 +1,8 @@
+const jsonschema = require("jsonschema");
 const express = require("express");
 const Book = require("../models/book");
-
+const bookSchema = requires("../bookSchema.json");
 const router = new express.Router();
-
 
 /** GET / => {books: [book, ...]}  */
 
