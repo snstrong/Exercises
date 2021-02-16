@@ -1,8 +1,9 @@
 const jsonschema = require("jsonschema");
 const express = require("express");
 const Book = require("../models/book");
-const bookSchema = requires("../bookSchema.json");
+const bookSchema = require("../bookSchema.json");
 const router = new express.Router();
+const ExpressError = require("../expressError");
 
 /** GET / => {books: [book, ...]}  */
 
@@ -30,6 +31,12 @@ router.get("/:id", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
+    const validated = jsonschema.validate(req.body, bookSchema);
+    if (!validated.valid) {
+      let listOfErrors = validated.errors.map((err) => err.stack);
+      let error = new ExpressError({ listOfErrors }, 400);
+      return next(error);
+    }
     const book = await Book.create(req.body);
     return res.status(201).json({ book });
   } catch (err) {
