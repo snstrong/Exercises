@@ -1,4 +1,4 @@
-export default [
+const fruits = [
   "🍇",
   "🍈",
   "🍉",
@@ -15,3 +15,4 @@ export default [
   "🍅",
   "🥑",
 ];
+export default fruits;
