@@ -1,0 +1,18 @@
+.Pokedex {
+  margin: auto;
+  padding: 5px;
+  width: 90%;
+}
+
+.Pokedex-cards {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Pokedex-title {
+  color: gray;
+  font-size: 2rem;
+}

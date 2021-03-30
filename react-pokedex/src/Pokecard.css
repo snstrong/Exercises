@@ -1,0 +1,19 @@
+.Pokecard {
+  width: 175px;
+  height: 250px;
+  background-color: rgb(223, 223, 223);
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.Pokecard-title {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: blue;
+  font-size: 1.5rem;
+}
+
+.Pokecard-data {
+  font-weight: bold;
+}
