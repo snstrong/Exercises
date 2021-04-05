@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  color: white;
+}
+
+.App-title {
+  font-family: cursive;
+  margin-bottom: 3.5rem;
+}
+
+body {
+  background-color: black;
+}
