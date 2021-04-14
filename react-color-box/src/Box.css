@@ -1,0 +1,20 @@
+.Box {
+  position: relative;
+  padding: 20px;
+  display: inline-block;
+  width: auto;
+}
+
+.Box-color-box {
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.Box-button {
+  display: inline;
+  position: absolute;
+  top: 20px;
+  right: 0px;
+}
