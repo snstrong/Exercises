@@ -1,6 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "./App";
 
-it("renders the app", () => {
+it("renders App", () => {
   render(<App />);
+});
+
+it("matches snapshot", () => {
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
 });

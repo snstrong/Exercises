@@ -6,9 +6,9 @@ import "./BoxList.css";
 
 const BoxList = () => {
   const INITIAL_STATE = [
-    { id: uuid(), backgroundColor: "cyan" },
-    { id: uuid(), backgroundColor: "magenta" },
-    { id: uuid(), backgroundColor: "yellow" },
+    // { id: uuid(), backgroundColor: "cyan" },
+    // { id: uuid(), backgroundColor: "magenta" },
+    // { id: uuid(), backgroundColor: "yellow" },
   ];
   const [boxes, setBoxes] = useState(INITIAL_STATE);
   const addBox = (newBox) => {
