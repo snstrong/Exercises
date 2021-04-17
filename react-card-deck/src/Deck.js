@@ -6,23 +6,47 @@ import axios from "axios";
  * From API, need deck id (useRef?)
  */
 
-const Deck = ({ name = "Elie", color = "purple" }) => {
+const Deck = () => {
   const BASE_URL = "https://deckofcardsapi.com/api";
   const [deck, setDeck] = useState(null);
+  const [drawnCards, setDrawnCards] = useState([]);
 
   // Set the deck
   useEffect(() => {
-    async function fetchDeck() {
+    async function getDeck() {
       const res = await axios.get(`${BASE_URL}/deck/new/shuffle`);
       setDeck(res.data);
     }
-    fetchDeck();
-    console.log(deck);
-  }, []);
+    getDeck();
+  }, [setDeck]);
+
+  // Pick a card
+  useEffect(() => {
+    async function getCard() {
+      if (deck) {
+        let { deck_id } = deck;
+        const res = await axios.get(
+          `${BASE_URL}/deck/${deck_id}/draw/?count=1`
+        );
+        console.log(res.data.cards[0]);
+        setDrawnCards([...drawnCards, res.data.cards[0]]);
+      } else {
+        console.log("hey");
+        setDrawnCards([]);
+      }
+    }
+    getCard();
+  }, [setDeck, deck]);
+
+  const cards = drawnCards.map((c) => (
+    <Card key={c.id} name={c.name} srcUrl={c.image} />
+  ));
 
   return (
     <div>
       <h1>Pick a Card</h1>
+      {deck ? <button>Pick a Card</button> : <p>"No deck set!"</p>}
+      <div>{cards}</div>
     </div>
   );
 
