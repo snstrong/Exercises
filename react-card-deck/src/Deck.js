@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Card from "./Card";
 import axios from "axios";
 
@@ -10,6 +10,8 @@ const Deck = () => {
   const BASE_URL = "https://deckofcardsapi.com/api";
   const [deck, setDeck] = useState(null);
   const [drawnCards, setDrawnCards] = useState([]);
+  const [autoDraw, setAutoDraw] = useState(false);
+  const timerRef = useRef(null);
 
   // Set the deck
   useEffect(() => {
@@ -20,46 +22,63 @@ const Deck = () => {
     getDeck();
   }, [setDeck]);
 
-  // Pick a card
+  // Draw cards
   useEffect(() => {
     async function getCard() {
-      if (deck) {
-        let { deck_id } = deck;
-        const res = await axios.get(
-          `${BASE_URL}/deck/${deck_id}/draw/?count=1`
-        );
-        console.log(res.data.cards[0]);
-        setDrawnCards([...drawnCards, res.data.cards[0]]);
-      } else {
-        console.log("hey");
-        setDrawnCards([]);
+      try {
+        if (deck) {
+          let { deck_id } = deck;
+          const res = await axios.get(
+            `${BASE_URL}/deck/${deck_id}/draw/?count=1`
+          );
+          if (res.data.remaining === 0) {
+            setAutoDraw(false);
+            throw new Error("no cards remaining!");
+          }
+          setDrawnCards([...drawnCards, { ...res.data.cards[0] }]);
+        } else {
+          console.log("hey");
+          setDrawnCards([]);
+        }
+      } catch (err) {
+        alert(err);
       }
     }
-    getCard();
-  }, [setDeck, deck]);
+    if (autoDraw && !timerRef.current) {
+      timerRef.current = setInterval(async () => {
+        await getCard();
+      }, 1000);
+    }
+    return () => {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    };
+  }, [autoDraw, setAutoDraw, drawnCards, deck]);
+
+  const toggleAutoDraw = () => {
+    setAutoDraw((auto) => !auto);
+  };
 
   const cards = drawnCards.map((c) => (
-    <Card key={c.id} name={c.name} srcUrl={c.image} />
+    <Card
+      id={c.code}
+      key={c.code}
+      name={`${c.value} of ${c.suit}`}
+      srcUrl={c.image}
+    />
   ));
 
   return (
-    <div>
+    <div className="Deck">
       <h1>Pick a Card</h1>
-      {deck ? <button>Pick a Card</button> : <p>"No deck set!"</p>}
+      {deck ? (
+        <button className="Deck-drawBtn" onClick={toggleAutoDraw}>
+          {autoDraw ? "Stop Drawing" : "Start Drawing"}
+        </button>
+      ) : null}
       <div>{cards}</div>
     </div>
   );
-
-  // const [data, setData] = useState(null);
-  // useEffect(() => {
-  //   async function loadProfile() {
-  //     const res = await axios.get(`https://api.github.com/users/${name}`);
-  //     setData(res.data.name);
-  //   }
-  //   loadProfile();
-  // }, [name]);
-
-  // return <h3 style={{ color }}>{data ? data : "Loading..."}</h3>;
 };
 
 export default Deck;
