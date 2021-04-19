@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import uuid from "uuid";
-import axios from "axios";
+import React from "react";
 import PlayingCard from "./PlayingCard";
 import "./PlayingCardList.css";
 import { useAxios } from "./hooks";
