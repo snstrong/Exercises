@@ -2,10 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Card from "./Card";
 import axios from "axios";
 
-/**
- * From API, need deck id (useRef?)
- */
-
 const Deck = () => {
   const BASE_URL = "https://deckofcardsapi.com/api";
   const [deck, setDeck] = useState(null);
