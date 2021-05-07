@@ -1,0 +1,27 @@
+Nav {
+  width: 100%;
+  background-color: rgb(76, 149, 218);
+  height: 3rem;
+}
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+  margin: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+a:focus,
+a:hover {
+  font-weight: bold;
+}
+
+a:active {
+  color: rgb(126, 182, 233);
+}
