@@ -1,13 +1,13 @@
-Nav {
+.Nav {
   width: 100%;
   background-color: rgb(76, 149, 218);
   height: 3rem;
 }
-ul {
+.Nav > ul {
   list-style-type: none;
 }
 
-li {
+.Nav > ul > li {
   display: inline-block;
   margin: 10px;
 }

@@ -1,23 +1,32 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 const DogDetail = ({ dogs }) => {
   const { name } = useParams();
-  if (name) {
-    return (
-      <div>
-        <p>This is the dog detail page for {name}.</p>
-      </div>
-    );
-  }
-  return null;
-  // const dog = dogs.filter((dog) => {
-  //   return dog.name.toLowerCase() === name;
-  // });
+  const history = useHistory();
 
-  // const factList = facts.map((fact) => {
-  //   return <p>{fact}</p>;
-  // });
+  if (name) {
+    const filtered = dogs.filter((dog) => {
+      return dog.name.toLowerCase() === name;
+    });
+    if (filtered.length < 0) {
+      const { name, age, src, facts } = filtered[0];
+      const factList = facts.map((fact) => {
+        return <li>{fact}</li>;
+      });
+      return (
+        <div>
+          <h2>{name}</h2>
+          <p>Age: {age}</p>
+          <img src={src}></img>
+          <h3>Get to know {name}!</h3>
+          <ul>{factList}</ul>
+        </div>
+      );
+    }
+  }
+  history.push("/dogs");
+  return null;
 };
 
 export default DogDetail;
