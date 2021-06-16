@@ -17,7 +17,7 @@ class LinkedList {
 
     for (let val of vals) this.push(val);
   }
-
+  /** _get(idx): returns node at idx. N.b., for retrieving value instead of node, use getAt(idx). */
   _get(idx) {
     let curr = this.head;
     let count = 0;
@@ -60,7 +60,9 @@ class LinkedList {
 
   /** pop(): return & remove last item. */
 
-  pop() {}
+  pop() {
+    return this.removeAt(this.length - 1);
+  }
 
   /** shift(): return & remove first item. */
 
