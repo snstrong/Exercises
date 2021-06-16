@@ -91,7 +91,25 @@ class LinkedList {
 
   /** insertAt(idx, val): add node w/val before idx. */
 
-  insertAt(idx, val) {}
+  insertAt(idx, val) {
+    if (idx > this.length || idx < 0) {
+      throw new Error("Invalid index.");
+    }
+
+    if (idx === 0) {
+      return this.unshift(val);
+    }
+    if (idx === this.length) {
+      return this.push(val);
+    }
+
+    let prev = this._get(idx - 1);
+    let newNode = new Node(val);
+    newNode.next = prev.next;
+    prev.next = newNode;
+
+    this.length += 1;
+  }
 
   /** removeAt(idx): return & remove item at idx, */
 
