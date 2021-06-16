@@ -18,6 +18,16 @@ class LinkedList {
     for (let val of vals) this.push(val);
   }
 
+  _get(idx) {
+    let curr = this.head;
+    let count = 0;
+    while (curr !== null && count != idx) {
+      count += 1;
+      curr = curr.next;
+    }
+    return curr;
+  }
+
   /** push(val): add new value to end of list. */
 
   push(val) {
@@ -70,7 +80,35 @@ class LinkedList {
 
   /** removeAt(idx): return & remove item at idx, */
 
-  removeAt(idx) {}
+  removeAt(idx) {
+    if (idx >= this.length || idx < 0) {
+      throw new Error("Invalid index");
+    }
+    // edge case: remove first item
+    if (idx === 0) {
+      let val = this.head.val;
+      this.head = this.head.next;
+      this.length -= 1;
+      if (this.length < 2) this.tail = this.head;
+      return val;
+    }
+    let prev = this._get(idx - 1);
+
+    // edge case: remove tail
+    if (idx === this.length - 1) {
+      let val = prev.next.val;
+      prev.next = prev.next.next;
+      this.tail = prev;
+      this.length -= 1;
+      return val;
+    }
+
+    // remove from middle section
+    let val = prev.next.val;
+    prev.next = prev.next.next;
+    this.length -= 1;
+    return val;
+  }
 
   /** average(): return an average of all values in the list */
 

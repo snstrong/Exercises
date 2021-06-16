@@ -124,16 +124,16 @@ describe("unshift", function () {
 //   });
 // });
 
-// describe("removeAt", function() {
-//   it("removes from 1-item list", function() {
-//     let lst = new LinkedList(["a"]);
+describe("removeAt", function () {
+  it("removes from 1-item list", function () {
+    let lst = new LinkedList(["a"]);
 
-//     lst.removeAt(0);
-//     expect(lst.length).toBe(0);
-//     expect(lst.head).toBe(null);
-//     expect(lst.tail).toBe(null);
-//   });
-// });
+    lst.removeAt(0);
+    expect(lst.length).toBe(0);
+    expect(lst.head).toBe(null);
+    expect(lst.tail).toBe(null);
+  });
+});
 
 // describe("average", function() {
 //   it("calculates the average of items in a list", function() {
