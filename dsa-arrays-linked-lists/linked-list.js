@@ -66,7 +66,9 @@ class LinkedList {
 
   /** shift(): return & remove first item. */
 
-  shift() {}
+  shift() {
+    return this.removeAt(0);
+  }
 
   /** getAt(idx): get val at idx. */
 

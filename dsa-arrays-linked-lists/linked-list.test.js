@@ -62,20 +62,20 @@ describe("pop", function () {
   });
 });
 
-// describe("shift", function() {
-//   it("removes node at start and decrements length", function() {
-//     let lst = new LinkedList([5, 10]);
+describe("shift", function () {
+  it("removes node at start and decrements length", function () {
+    let lst = new LinkedList([5, 10]);
 
-//     expect(lst.shift()).toBe(5);
-//     expect(lst.tail.val).toBe(10);
-//     expect(lst.length).toBe(1);
+    expect(lst.shift()).toBe(5);
+    expect(lst.tail.val).toBe(10);
+    expect(lst.length).toBe(1);
 
-//     expect(lst.shift()).toBe(10);
-//     expect(lst.tail).toBe(null);
-//     expect(lst.head).toBe(null);
-//     expect(lst.length).toBe(0);
-//   });
-// });
+    expect(lst.shift()).toBe(10);
+    expect(lst.tail).toBe(null);
+    expect(lst.head).toBe(null);
+    expect(lst.length).toBe(0);
+  });
+});
 
 // describe("getAt", function() {
 //   it("gets val at index", function() {
