@@ -135,14 +135,14 @@ describe("removeAt", function () {
   });
 });
 
-// describe("average", function() {
-//   it("calculates the average of items in a list", function() {
-//     let lst = new LinkedList([2, 3, 1, 1, 7, 6, 9]);
-//     expect(lst.average()).toBeCloseTo(4.1429, 4);
-//   });
+describe("average", function () {
+  it("calculates the average of items in a list", function () {
+    let lst = new LinkedList([2, 3, 1, 1, 7, 6, 9]);
+    expect(lst.average()).toBeCloseTo(4.1429, 4);
+  });
 
-//   it("returns 0 for empty lists", function() {
-//     let lst = new LinkedList();
-//     expect(lst.average()).toBe(0);
-//   });
-// });
+  it("returns 0 for empty lists", function () {
+    let lst = new LinkedList();
+    expect(lst.average()).toBe(0);
+  });
+});
