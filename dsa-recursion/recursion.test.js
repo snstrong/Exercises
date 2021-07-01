@@ -17,24 +17,26 @@ describe("product", function () {
   });
 });
 
-// describe("longest", function() {
-//   it("returns the length of the longest word in an array of words", function() {
-//     expect(longest(["hello", "hi", "hola"])).toBe(5);
-//     expect(longest(["abcdefg", "hijklmnop", "qrs", "tuv", "wx", "y", "z"])).toBe(9);
-//     expect(longest(["a", "b", "c", "d", "e"])).toBe(1);
-//     expect(longest(["abcde"])).toBe(5);
-//   });
-// });
+describe("longest", function () {
+  it("returns the length of the longest word in an array of words", function () {
+    expect(longest(["hello", "hi", "hola"])).toBe(5);
+    expect(
+      longest(["abcdefg", "hijklmnop", "qrs", "tuv", "wx", "y", "z"])
+    ).toBe(9);
+    expect(longest(["a", "b", "c", "d", "e"])).toBe(1);
+    expect(longest(["abcde"])).toBe(5);
+  });
+});
 
-// describe("everyOther", function() {
-//   it("returns a string with every other character in the input", function() {
-//     expect(everyOther("hello")).toBe("hlo");
-//     expect(everyOther("banana stand")).toBe("bnn tn");
-//     expect(everyOther("ddoouubbllee")).toBe("double");
-//     expect(everyOther("hi")).toBe("h");
-//     expect(everyOther("z")).toBe("z");
-//   });
-// });
+describe("everyOther", function () {
+  it("returns a string with every other character in the input", function () {
+    expect(everyOther("hello")).toBe("hlo");
+    expect(everyOther("banana stand")).toBe("bnn tn");
+    expect(everyOther("ddoouubbllee")).toBe("double");
+    expect(everyOther("hi")).toBe("h");
+    expect(everyOther("z")).toBe("z");
+  });
+});
 
 // describe("isPalindrome", function() {
 //   it("returns true if the string is a palindrome", function() {

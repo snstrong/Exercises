@@ -8,11 +8,33 @@ function product(nums, i = 0) {
 
 /** longest: return the length of the longest word in an array of words. */
 
-function longest(words) {}
+function longest(words) {
+  if (words.length === 0) return 0;
+
+  let head = words[0];
+  let tail = words.slice(1);
+
+  let longestTail = longest(tail);
+
+  if (head.length > longestTail) {
+    return head.length;
+  } else {
+    return longestTail;
+  }
+}
 
 /** everyOther: return a string with every other letter. */
 
-function everyOther(str) {}
+function everyOther(str) {
+  let head = str[0];
+  let tail = str.slice(2);
+
+  if (tail.length === 0) {
+    return head;
+  } else {
+    return `${head}${everyOther(tail)}`;
+  }
+}
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
