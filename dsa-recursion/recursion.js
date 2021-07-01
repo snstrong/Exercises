@@ -66,7 +66,21 @@ function revString(str, i = str.length - 1) {
 
 /** gatherStrings: given an object, return an array of all of the string values. */
 
-function gatherStrings(obj) {}
+function gatherStrings(obj, i = 0, arr = []) {
+  let keys = Object.keys(obj);
+  if (keys.length === 0) return null;
+
+  let val = obj[keys[i]];
+
+  if (typeof val === "string") {
+    arr.push(val);
+  } else if (typeof val === "object") {
+    arr.push(...gatherStrings(val));
+  }
+  if (i === keys.length - 1) return arr;
+
+  return gatherStrings(obj, i + 1, arr);
+}
 
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
