@@ -68,14 +68,14 @@ describe("findIndex", function () {
   });
 });
 
-// describe("revString", function() {
-//   it("returns a reversed copy of the string", function() {
-//     expect(revString("porcupine")).toBe("enipucrop");
-//     expect(revString("duck")).toBe("kcud");
-//     expect(revString("cat")).toBe("tac");
-//     expect(revString("pony")).toBe("ynop");
-//   });
-// });
+describe("revString", function () {
+  it("returns a reversed copy of the string", function () {
+    expect(revString("porcupine")).toBe("enipucrop");
+    expect(revString("duck")).toBe("kcud");
+    expect(revString("cat")).toBe("tac");
+    expect(revString("pony")).toBe("ynop");
+  });
+});
 
 // describe("gatherStrings", function() {
 //   it("gathers all object string values into an array", function() {
