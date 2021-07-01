@@ -38,20 +38,20 @@ describe("everyOther", function () {
   });
 });
 
-// describe("isPalindrome", function() {
-//   it("returns true if the string is a palindrome", function() {
-//     expect(isPalindrome("tacocat")).toBe(true);
-//     expect(isPalindrome("racecar")).toBe(true);
-//     expect(isPalindrome("a")).toBe(true);
-//     expect(isPalindrome("helloolleh")).toBe(true);
-//   });
+describe("isPalindrome", function () {
+  it("returns true if the string is a palindrome", function () {
+    expect(isPalindrome("tacocat")).toBe(true);
+    expect(isPalindrome("racecar")).toBe(true);
+    expect(isPalindrome("a")).toBe(true);
+    expect(isPalindrome("helloolleh")).toBe(true);
+  });
 
-//   it("returns false if the string is not a palindrome", function() {
-//     expect(isPalindrome("tacodog")).toBe(false);
-//     expect(isPalindrome("az")).toBe(false);
-//     expect(isPalindrome("goodbye")).toBe(false);
-//   });
-// });
+  it("returns false if the string is not a palindrome", function () {
+    expect(isPalindrome("tacodog")).toBe(false);
+    expect(isPalindrome("az")).toBe(false);
+    expect(isPalindrome("goodbye")).toBe(false);
+  });
+});
 
 // describe("findIndex", function() {
 //   let animals = ["duck", "cat", "pony", "cat"];
