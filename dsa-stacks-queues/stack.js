@@ -41,12 +41,14 @@ class Stack {
   /** peek(): return the value of the first node in the stack. */
 
   peek() {
+    return this.first.val;
 
   }
 
   /** isEmpty(): return true if the stack is empty, otherwise false */
 
   isEmpty() {
+    return (!this.first) ? true : false;
 
   }
 }
