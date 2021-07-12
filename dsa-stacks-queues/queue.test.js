@@ -38,14 +38,14 @@ describe("dequeue", function() {
   });
 });
 
-// describe("peek", function() {
-//   it("returns the value at the start of the queue", function() {
-//     queue.enqueue(3);
-//     expect(queue.peek()).toBe(3);
-//     queue.enqueue(5);
-//     expect(queue.peek()).toBe(3);
-//   });
-// });
+describe("peek", function() {
+  it("returns the value at the start of the queue", function() {
+    queue.enqueue(3);
+    expect(queue.peek()).toBe(3);
+    queue.enqueue(5);
+    expect(queue.peek()).toBe(3);
+  });
+});
 
 // describe("isEmpty", function() {
 //   it("returns true for empty queues", function() {
