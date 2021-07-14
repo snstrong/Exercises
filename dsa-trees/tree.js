@@ -50,14 +50,30 @@ class Tree {
   countEvens() {
     if (!this.root) return 0;
     return this.root.countEvens();
-
-
   }
 
   /** numGreater(lowerBound): return a count of the number of nodes
    * whose value is greater than lowerBound. */
 
   numGreater(lowerBound) {
+    if (!this.root) {
+      return 0;
+    }
+    
+    let count = this.root.val > lowerBound ? 1 : 0;
+
+    function numGreaterHelper(node) {
+      if (!node.children) {
+        return this.node.val > lowerBound ? 1 : 0;
+      }
+      for (let child of node.children) {
+        if (child.val > lowerBound) count++;
+        if (child.children.length > 0) numGreaterHelper(child);
+      }
+    }
+
+    numGreaterHelper(this.root);
+    return count;
 
   }
 }
