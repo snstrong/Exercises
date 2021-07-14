@@ -46,19 +46,19 @@ describe("sumValues", function() {
   });
 });
 
-// describe("countEvens", function() {
-//   it("counts nodes in simple trees", function() {
-//     expect(smallTree.countEvens()).toEqual(1);
-//   });
+describe("countEvens", function() {
+  it("counts nodes in simple trees", function() {
+    expect(smallTree.countEvens()).toEqual(1);
+  });
 
-//   it("counts Treenodes in more complicated trees", function() {
-//     expect(largeTree.countEvens()).toEqual(4);
-//   });
+  it("counts Treenodes in more complicated trees", function() {
+    expect(largeTree.countEvens()).toEqual(4);
+  });
 
-//   it("counts empty", function() {
-//     expect(emptyTree.countEvens()).toEqual(0);
-//   });
-// });
+  it("counts empty", function() {
+    expect(emptyTree.countEvens()).toEqual(0);
+  });
+});
 
 // describe("numGreater", function() {
 //   it("counts nodes in small trees", function() {

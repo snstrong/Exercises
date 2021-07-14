@@ -15,6 +15,22 @@ class TreeNode {
     }
     return sum;
   }
+
+   /** countEvens(): count all of the nodes in the tree with even values. */
+
+   countEvens() {
+     if (!this.children) {
+       return this.val % 2 === 0 ? this.val : 0;
+     }
+     let evenCount = 0;
+     for (let child of this.children) {
+       if (child.val % 2 === 0) evenCount++;
+       evenCount += child.countEvens();
+     }
+     return evenCount;
+   }
+
+
 }
 
 class Tree {
@@ -32,6 +48,9 @@ class Tree {
   /** countEvens(): count all of the nodes in the tree with even values. */
 
   countEvens() {
+    if (!this.root) return 0;
+    return this.root.countEvens();
+
 
   }
 
