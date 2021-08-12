@@ -40,31 +40,23 @@ describe("insertRecursively", function () {
   });
 });
 
-// describe("find", function() {
-//   it("finds a node correctly", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12);
-//     var foundNode = binarySearchTree.find(20);
-//     expect(foundNode.val).toBe(20);
-//     expect(foundNode.left).toBe(null);
-//     expect(foundNode.right).toBe(null);
-//   });
+describe("find", function () {
+  it("finds a node correctly", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(15).insert(20).insert(10).insert(12);
+    var foundNode = binarySearchTree.find(20);
+    expect(foundNode.val).toBe(20);
+    expect(foundNode.left).toBe(null);
+    expect(foundNode.right).toBe(null);
+  });
 
-//   it("returns undefined if a node is not found", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12);
-//     var foundNode = binarySearchTree.find(120);
-//     expect(foundNode).toBe(undefined);
-//   });
-// });
+  it("returns undefined if a node is not found", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree.insert(15).insert(20).insert(10).insert(12);
+    var foundNode = binarySearchTree.find(120);
+    expect(foundNode).toBe(undefined);
+  });
+});
 
 // describe("findRecursively", function() {
 //   it("finds a node correctly", function() {
