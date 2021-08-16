@@ -106,20 +106,20 @@ describe("dfsInOrder", function () {
   });
 });
 
-// describe("dfsPostOrder", function() {
-//   it("returns an array of values found with DFS Post Order", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.dfsPostOrder()).toEqual([5, 1, 12, 10, 50, 20, 15]);
-//   });
-// });
+describe("dfsPostOrder", function () {
+  it("returns an array of values found with DFS Post Order", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree
+      .insert(15)
+      .insert(20)
+      .insert(10)
+      .insert(12)
+      .insert(1)
+      .insert(5)
+      .insert(50);
+    expect(binarySearchTree.dfsPostOrder()).toEqual([5, 1, 12, 10, 50, 20, 15]);
+  });
+});
 
 // describe("BFS", function() {
 //   it("should return the correct output", function() {
