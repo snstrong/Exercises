@@ -76,20 +76,20 @@ describe("findRecursively", function () {
   });
 });
 
-// describe("dfsPreOrder", function() {
-//   it("returns an array of values found with DFS Pre Order", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.dfsPreOrder()).toEqual([15, 10, 1, 5, 12, 20, 50]);
-//   });
-// });
+describe("dfsPreOrder", function () {
+  it("returns an array of values found with DFS Pre Order", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree
+      .insert(15)
+      .insert(20)
+      .insert(10)
+      .insert(12)
+      .insert(1)
+      .insert(5)
+      .insert(50);
+    expect(binarySearchTree.dfsPreOrder()).toEqual([15, 10, 1, 5, 12, 20, 50]);
+  });
+});
 
 // describe("dfsInOrder", function() {
 //   it("returns an array of values found with DFS In Order", function() {
