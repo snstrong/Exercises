@@ -121,20 +121,20 @@ describe("dfsPostOrder", function () {
   });
 });
 
-// describe("BFS", function() {
-//   it("should return the correct output", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.bfs()).toEqual([15, 10, 20, 1, 12, 50, 5]);
-//   });
-// });
+describe("BFS", function () {
+  it("should return the correct output", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree
+      .insert(15)
+      .insert(20)
+      .insert(10)
+      .insert(12)
+      .insert(1)
+      .insert(5)
+      .insert(50);
+    expect(binarySearchTree.bfs()).toEqual([15, 10, 20, 1, 12, 50, 5]);
+  });
+});
 
 // describe("remove", function() {
 //   it("remove should correctly remove a node with no children", function() {

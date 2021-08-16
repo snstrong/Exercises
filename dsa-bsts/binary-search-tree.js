@@ -158,7 +158,22 @@ class BinarySearchTree {
   /** bfs(): Traverse the array using BFS.
    * Return an array of visited nodes. */
 
-  bfs() {}
+  bfs() {
+    let current = this.root;
+    let queue = [];
+    let visited = [];
+
+    queue.push(current);
+
+    while (queue.length) {
+      current = queue.shift();
+      visited.push(current.val);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return visited;
+  }
 
   /** Further Study!
    * remove(val): Removes a node in the BST with the value val.
