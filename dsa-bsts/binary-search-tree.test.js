@@ -91,20 +91,20 @@ describe("dfsPreOrder", function () {
   });
 });
 
-// describe("dfsInOrder", function() {
-//   it("returns an array of values found with DFS In Order", function() {
-//     let binarySearchTree = new BinarySearchTree();
-//     binarySearchTree
-//       .insert(15)
-//       .insert(20)
-//       .insert(10)
-//       .insert(12)
-//       .insert(1)
-//       .insert(5)
-//       .insert(50);
-//     expect(binarySearchTree.dfsInOrder()).toEqual([1, 5, 10, 12, 15, 20, 50]);
-//   });
-// });
+describe("dfsInOrder", function () {
+  it("returns an array of values found with DFS In Order", function () {
+    let binarySearchTree = new BinarySearchTree();
+    binarySearchTree
+      .insert(15)
+      .insert(20)
+      .insert(10)
+      .insert(12)
+      .insert(1)
+      .insert(5)
+      .insert(50);
+    expect(binarySearchTree.dfsInOrder()).toEqual([1, 5, 10, 12, 15, 20, 50]);
+  });
+});
 
 // describe("dfsPostOrder", function() {
 //   it("returns an array of values found with DFS Post Order", function() {
