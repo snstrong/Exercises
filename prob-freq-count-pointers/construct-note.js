@@ -27,6 +27,7 @@ function countCharFreq(str) {
 }
 
 function constructNote(message, letters) {
+  if (message.length > letters.length) return false;
   let mCharFreq = countCharFreq(message);
   let lCharFreq = countCharFreq(letters);
   for (let key of mCharFreq.keys()) {
