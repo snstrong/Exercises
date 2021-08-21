@@ -29,6 +29,4 @@ function sameFrequency(int1, int2) {
   return true;
 }
 
-console.log(sameFrequency(3589578, 5879385));
-
 module.exports = sameFrequency;
