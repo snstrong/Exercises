@@ -3,8 +3,19 @@
   background-color: rgb(76, 149, 218);
   height: 3rem;
 }
+
+#site-name {
+  display: inline-block;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  color: orange;
+}
+
 .Nav > ul {
   list-style-type: none;
+  display: inline-block;
+  width: auto;
 }
 
 .Nav > ul > li {
